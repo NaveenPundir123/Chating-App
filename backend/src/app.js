@@ -5,7 +5,7 @@ const fs = require("fs");
 const path = require("path");
 
 const FRONTEND_URL = process.env.FRONTEND_URL;
-const publicDir = path.join(process.cwd(), "public");
+const publicDir = path.join(process.cwd(), "backend", "public");
 
 const app = express();
 app.use(express.json());
