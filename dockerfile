@@ -6,8 +6,7 @@ WORKDIR /app/frontend
 COPY ["frontend/Chatting App/package.json", "frontend/Chatting App/package-lock.json", "./"]
 RUN npm install --no-audit --no-fund --legacy-peer-deps
 COPY ["frontend/Chatting App/", "./"]
-ARG VITE_CLERK_PUBLISHABLE_KEY
-ENV VITE_CLERK_PUBLISHABLE_KEY=$VITE_CLERK_PUBLISHABLE_KEY
+ENV VITE_CLERK_PUBLISHABLE_KEY=pk_test_bWFqb3ItbWF5Zmx5LTk5LmNsZXJrLmFjY291bnRzLmRldiQ
 RUN npm run build
 
 # --- Stage 2: install backend dependencies ---
