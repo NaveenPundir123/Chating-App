@@ -2,7 +2,7 @@ const path = require("path");
 require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 const app = require("./src/app");
 const connectDB = require("./src/db/db");
-const { default: job } = require("./src/lib/cron");
+const job = require("./src/lib/cron");
 
 if (!process.env.MONGO_URI) {
   console.error(
