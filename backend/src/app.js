@@ -3,7 +3,7 @@ const cors = require("cors");
 const { clerkMiddleware } = require("@clerk/express");
 const fs = require("fs");
 const path = require("path");
-const { ok } = require("assert");
+const clerkWebhookRouter = require("./webhooks/clerk.webhooks");
 
 const FRONTEND_URL = process.env.FRONTEND_URL;
 const publicDir = path.join(process.cwd(), "backend", "public");
@@ -11,6 +11,12 @@ const publicDir = path.join(process.cwd(), "backend", "public");
 const app = express();
 app.use(express.json());
 app.use(clerkMiddleware());
+
+app.use(
+  "/api/webhooks/clerk",
+  express.raw({ type: "application/json" }),
+  clerkWebhookRouter,
+);
 
 app.get("/health", (req, res) => {
   res.status(200).json({
