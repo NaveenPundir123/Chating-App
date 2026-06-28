@@ -1,4 +1,4 @@
-import multer from "multer";
+const multer = require("multer");
 
 const MAX_FILE_SIZE = 25 * 1024 * 1024; // 25mb
 
