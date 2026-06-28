@@ -4,6 +4,7 @@ const { clerkMiddleware } = require("@clerk/express");
 const fs = require("fs");
 const path = require("path");
 const clerkWebhookRouter = require("./webhooks/clerk.webhooks");
+const authRoutes = require("../src/routes/auth.routes");
 
 const FRONTEND_URL = process.env.FRONTEND_URL;
 const publicDir = path.join(process.cwd(), "backend", "public");
@@ -23,6 +24,8 @@ app.get("/health", (req, res) => {
     ok: true,
   });
 });
+
+app.use("/api/auth", authRoutes);
 
 if (fs.existsSync(publicDir)) {
   app.use(express.static(publicDir));
