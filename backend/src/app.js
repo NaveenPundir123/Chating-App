@@ -5,6 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const clerkWebhookRouter = require("./webhooks/clerk.webhooks");
 const authRoutes = require("../src/routes/auth.routes");
+const messageRoutes = require("../src/routes/message.route");
 
 const FRONTEND_URL = process.env.FRONTEND_URL;
 const publicDir = path.join(process.cwd(), "backend", "public");
@@ -26,6 +27,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/messages", messageRoutes);
 
 if (fs.existsSync(publicDir)) {
   app.use(express.static(publicDir));
