@@ -1,11 +1,10 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { DEFAULT_THEME_PRESET_ID } from "../data/herouiThemePresets";
 import {
   applyThemePresetToDocument,
   isValidThemePreset,
   ThemeContext,
 } from "./theme";
-
+import { DEFAULT_THEME_PRESET_ID } from "../data/herouiThemePresets";
 function getSystemTheme() {
   if (typeof window === "undefined") return "light";
   return window.matchMedia("(prefers-color-scheme: dark)").matches
